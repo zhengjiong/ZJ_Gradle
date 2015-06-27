@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.zj.example.gradle.demo2"
 
-        /*这里配置manifestPlaceholders后,在注释productFlavors后才可以正确运行*/
+        /*这里配置manifestPlaceholders后,在注释productFlavors后也可以正确运行*/
         manifestPlaceholders = [lable : "default", launcher_activity_name : "MainActivity"]
 
         minSdkVersion 15
