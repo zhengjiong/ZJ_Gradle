@@ -51,7 +51,7 @@ android {
             //如果要修改包名,可以修改applicationId
             applicationId "com.zj.example.gradle.demo2.xiaomi"
 
-            //如果修改了包名,这里需要启动第二个Activity的话,有两种方式:
+            //如果修改了applicationId(包名),需要修改启动Activity的话,有两种方式:
             //方法1最好
 
             //方法1:在manifest中配置:android:name="com.zj.example.gradle.demo2.${launcher_activity_name}"
