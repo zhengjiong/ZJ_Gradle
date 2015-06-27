@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+/* * * * * * * * * * 多渠道打包的时候加载不同的Androidmanifest.xml * * * * * * * * * */
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "com.zj.example.zj_gradle"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    //设置签名,可以不配置,但是只能打debug包
+    //必须写成signingConfigs不能自定义
+    signingConfigs {
+
+        //config名字可以自己定义
+        releaseConfig {
+            storeFile file("key.keystore")
+            storePassword "123456"
+            keyAlias "android"
+            keyPassword "123456"
+        }
+
+        buildTypes {
+            //这里必须写成debug
+            debug{
+                signingConfig signingConfigs.releaseConfig
+            }
+            //这里必须写成release
+            release {
+                signingConfig signingConfigs.releaseConfig
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+        }
+    }
+
+    productFlavors {
+        //注意这里的flavors的名字要和你的androidmanifest文件夹的名字对应。这样配置之后，构建的就是多渠道的APK了。
+        //play和xiaomi文件夹必须在src目录下才能被自动找到,
+        play{
+            //建立play文件夹里面放入androidmanifest.xml,
+            //这样打包的时候,可以就能自动使用该文件夹下的androidmanifest文件
+            applicationId "com.zj.example.play"
+        }
+        xiaomi{
+            applicationId "com.zj.example.xiaomi"
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.2.0'
+}

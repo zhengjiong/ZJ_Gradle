@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name1">ZJ_Gradle</string>
+    <string name="app_name2">play</string>
+    <string name="app_name3">xiaomi</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+</resources>

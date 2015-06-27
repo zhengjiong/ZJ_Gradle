@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+
+
+/* * * * * * * * demo2不能通过Android Studio运行, 只支持gradle命令打包 * * * * * * * * */
+
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "com.zj.example.gradle.demo2"
+
+        /*这里配置manifestPlaceholders后,在注释productFlavors后才可以正确运行*/
+        manifestPlaceholders = [lable : "default", launcher_activity_name : "MainActivity"]
+
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+    //可以不配置签名(只能打debug包)
+    /*
+    signingConfigs {
+
+        releaseConfig {
+            storeFile file("key.keystore")
+            storePassword "123456"
+            keyAlias "android"
+            keyPassword "123456"
+        }
+
+        buildTypes {
+            debug{
+                signingConfig signingConfigs.releaseConfig
+            }
+            release {
+                signingConfig signingConfigs.releaseConfig
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+        }
+    }*/
+
+    productFlavors{
+        xiaomi{
+            //如果要修改包名,可以修改applicationId
+            applicationId "com.zj.example.gradle.demo2.xiaomi"
+
+            //如果修改了包名,这里需要启动第二个Activity的话,有两种方式:
+            //方法1最好
+
+            //方法1:在manifest中配置:android:name="com.zj.example.gradle.demo2.${launcher_activity_name}"
+            //这样在manifestPlaceholders中就不需要把包名写全
+
+            //这里的包名必须要对应项目文件的路径
+            manifestPlaceholders = [lable : "xiaomi", launcher_activity_name : "SecondActivity"]
+
+
+            //方法2:在placeholders中把包名写全
+            //manifestPlaceholders = [lable : "xiaomi", launcher_activity_name : "com.zj.example.gradle.demo2.SecondActivity"]
+        }
+
+        playstore{
+            applicationId "com.zj.example.gradle.demo2.playstore"
+            manifestPlaceholders = [lable : "playstore", launcher_activity_name: "MainActivity"]
+        }
+    }
+
+    sourceSets{
+        main {
+            //manifest.srcFile 'src/main/AndroidManifest.xml'
+            manifest.srcFile 'src/main/AndroidManifest-build.xml'
+            java.srcDirs 'src/main/java'
+            resources.srcDirs 'src/main/java'
+            aidl.srcDirs 'src/main/java'
+            renderscript.srcDirs 'src/main/java'
+            res.srcDirs 'src/main/res'
+            assets.srcDirs 'src/main/assets'
+        }
+
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.2.0'
+}
