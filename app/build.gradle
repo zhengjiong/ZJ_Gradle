@@ -44,6 +44,7 @@ android {
         play{
             //建立play文件夹里面放入androidmanifest.xml,
             //这样打包的时候,可以就能自动使用该文件夹下的androidmanifest文件
+            //res中的文件也会自动使用
             applicationId "com.zj.example.play"
         }
         xiaomi{
