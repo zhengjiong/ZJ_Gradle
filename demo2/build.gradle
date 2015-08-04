@@ -1,8 +1,6 @@
 apply plugin: 'com.android.application'
 
 
-/* * * * * * * * demo2不能通过Android Studio运行, 只支持gradle命令打包 * * * * * * * * */
-
 
 android {
     compileSdkVersion 22
@@ -16,15 +14,14 @@ android {
 
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
     }
     lintOptions {
         abortOnError false
     }
 
     //可以不配置签名(只能打debug包)
-    /*
     signingConfigs {
 
         releaseConfig {
@@ -44,7 +41,7 @@ android {
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             }
         }
-    }*/
+    }
 
     productFlavors{
         xiaomi{
@@ -67,7 +64,9 @@ android {
 
         playstore{
             applicationId "com.zj.example.gradle.demo2.playstore"
-            manifestPlaceholders = [lable : "playstore", launcher_activity_name: "MainActivity"]
+            versionCode 3
+            versionName "3.0"
+            manifestPlaceholders = [lable : "playstore", launcher_activity_name: "SecondActivity"]
         }
     }
 
