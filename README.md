@@ -1,4 +1,5 @@
-# 使用Gradle设置AndroidManifest.xml中的启动Activity (Android Studio版本)
+> * 使用Gradle设置AndroidManifest.xml中的启动Activity (Android Studio版本)
+> * 使用Gradle设置不同的渠道使用不同的res资源文件
 
 方法1: (app) 使用两个AndroidManifest.xml文件 
 
