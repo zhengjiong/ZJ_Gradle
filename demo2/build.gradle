@@ -55,7 +55,7 @@ android {
             //这样在manifestPlaceholders中就不需要把包名写全
 
             //这里的包名必须要对应项目文件的路径
-            manifestPlaceholders = [lable : "xiaomi", launcher_activity_name : "SecondActivity"]
+            manifestPlaceholders = [lable : "demo2-xiaomi", launcher_activity_name : "SecondActivity"]
 
 
             //方法2:在placeholders中把包名写全
@@ -66,7 +66,7 @@ android {
             applicationId "com.zj.example.gradle.demo2.playstore"
             versionCode 3
             versionName "3.0"
-            manifestPlaceholders = [lable : "playstore", launcher_activity_name: "SecondActivity"]
+            manifestPlaceholders = [lable : "demo2-playstore", launcher_activity_name: "SecondActivity"]
         }
     }
 

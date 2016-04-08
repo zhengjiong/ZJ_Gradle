@@ -5,10 +5,10 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="${lable}"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.zj.example.gradle.demo2.${launcher_activity_name}"
             android:label="${lable}" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

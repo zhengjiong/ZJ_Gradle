@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-/* * * * * * * * * * 多渠道打包的时候加载不同的Androidmanifest.xml * * * * * * * * * */
+/* * * * * * * * * * 多渠道打包的时候加载不同的Androidmanifest.xml和res资源文件 * * * * * * * * * */
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
@@ -42,13 +42,14 @@ android {
         //注意这里的flavors的名字要和你的androidmanifest文件夹的名字对应。这样配置之后，构建的就是多渠道的APK了。
         //play和xiaomi文件夹必须在src目录下才能被自动找到,
         play{
-            //建立play文件夹里面放入androidmanifest.xml,
-            //这样打包的时候,可以就能自动使用该文件夹下的androidmanifest文件
-            //res中的文件也会自动使用
+            //建立play文件夹里面放入androidmanifest.xml和res资源文件,
+            //这样打包的时候,可以就能自动使用该文件夹下的androidmanifest文件和res文件
             applicationId "com.zj.example.play"
+            manifestPlaceholders = [lable : "demo1-play", launcherActivity : "com.zj.example.zj_gradle.MainActivity"]
         }
         xiaomi{
             applicationId "com.zj.example.xiaomi"
+            manifestPlaceholders = [lable : "demo1-xiaomi", launcherActivity : "com.zj.example.zj_gradle.SecondActivity"]
         }
     }
 

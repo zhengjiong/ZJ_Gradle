@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App-Play</string>
+    <string name="app_name">ZJ_Gradle_Play</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
